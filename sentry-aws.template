@@ -39,6 +39,16 @@
       "MaxLength": "64"
     },
     
+	
+    "DBName": {
+      "Default": "localhost",
+      "Description" : "Sentry database host",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "64",
+      "AllowedPattern" : "[-_ a-zA-Z0-9]*",
+      "ConstraintDescription" : "can contain only alphanumeric characters, spaces, dashes and underscores."
+    },
 
     "DBName": {
       "Default": "sentry",
@@ -49,6 +59,8 @@
       "AllowedPattern" : "[a-zA-Z][a-zA-Z0-9]*",
       "ConstraintDescription" : "must begin with a letter and contain only alphanumeric characters."
     },
+	
+	
 
     "DBUsername": {
       "Default": "sentry",
@@ -168,7 +180,7 @@
                   "    'NAME': '", { "Ref" : "DBName" }, "',\n",
                   "    'USER': '", { "Ref" : "DBUsername" }, "',\n",
                   "    'PASSWORD': '", { "Ref" : "DBPassword" }, "',\n",
-                  "    'HOST': 'localhost',\n",
+                  "    'HOST':'", { "Ref" : "DBHost" },"'\n",
                   "    'PORT': '',\n",
                   "   }\n",
                   "}\n",
